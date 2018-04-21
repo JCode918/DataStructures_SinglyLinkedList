@@ -44,7 +44,7 @@ public:
 	int getNodeCount() { return nodeCounter; };
 
 	/*
-	Returns the data value of the head node or the when updated the object that is located at the head
+	Returns the data value of the head node or object that is located at the head(when changed to a template form)
 	*/
 	int getHeadValue() { return head->data; };
 
@@ -52,12 +52,23 @@ public:
 	Checks the list to see if then entered item was found
 	*/
 	void find(int value);
+
 	/*
 	Returns a Boolean value of the the find
 	*/
 	bool findPrivate(int value, Node* t);
 
+	/*
+	Prints the list of all the nodes
+	*/
 	std::string PrintList();
+
+	/*
+	Deletes the node with the entered value
+	*/
+	void deleteNode(int value);
+
+	bool deleteNodePrivate(int value, Node* t);
 
 	~LinkedList();
 };

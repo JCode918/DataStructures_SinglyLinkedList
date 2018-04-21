@@ -55,7 +55,6 @@ bool LinkedList::addNodePrivate(int value, Node* t )
 
 }
 
-
 void LinkedList::find(int value)
 {
 	findPrivate(value, head);
@@ -81,7 +80,7 @@ bool LinkedList::findPrivate(int value, Node * t)
 		}
 		else if (t->data != value && t->ptr != nullptr)
 		{
-			findPrivate(value, t->ptr);
+			return findPrivate(value, t->ptr);
 		}
 		else if (t->data != value && t->ptr == nullptr)
 		{
@@ -109,6 +108,75 @@ std::string LinkedList::PrintList()
 
 	ss << std::endl;
 	return ss.str();
+}
+
+void LinkedList::deleteNode(int value)
+{
+	deleteNodePrivate(value, head);
+}
+
+bool LinkedList::deleteNodePrivate(int value, Node * t)
+{
+	/*
+	The Value doesn't exist in the linked list.
+	*/
+	if (findPrivate(value, head) == false && head == nullptr)
+	{
+		if (head == nullptr)
+		{
+			std::cerr << "This is an empty list" << std::endl;
+		}
+
+		return false;
+	}
+	else
+	{
+		/*
+		The Case where the value to be deleted is the head node.
+		*/
+		if (t->data == value && t == head)
+		{
+			Node* oldHead = t;
+			head = oldHead->ptr;
+			delete oldHead;
+			--nodeCounter; // Remember to update the counter.
+			return true;
+		}
+		if (t->data != value && t->ptr != nullptr)
+		{
+			if (t->ptr->data == value)
+			{
+				//Case where the Node to be deleted is between two nodes.
+				if (t->ptr->data == value && t->ptr->ptr != nullptr)
+				{
+					Node* aNode = t; // The Node Directly before the one to be deleted.
+					Node* bNode = t->ptr; // *** This is the Node to that will be deleted. ***
+					Node* cNode = t->ptr->ptr; // Node Directly after the one to be deleted.
+					aNode->ptr = cNode; // This step connects the aNode to the cNode.
+					delete bNode; // returns the memory used to create the node back.
+					--nodeCounter; 
+					return true;
+				}
+				// Case Where the Node to be deleted is already the last node.
+				else if (t->ptr->data == value && t->ptr->ptr == nullptr)
+				{
+					Node* aNode = t;
+					Node* bNode = aNode->ptr;
+					aNode->ptr = nullptr;
+					delete bNode;
+					--nodeCounter;
+					return true;
+				}
+
+			}
+			else if (t->ptr->data != value)
+			{
+				return deleteNodePrivate(value, t->ptr);
+			}
+		}
+
+	}
+	
 }
 
 LinkedList::~LinkedList()
