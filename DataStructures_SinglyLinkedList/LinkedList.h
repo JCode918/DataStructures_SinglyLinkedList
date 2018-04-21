@@ -41,10 +41,21 @@ public:
 	/*
 	Return the current count of for Items in the list.
 	*/
-
 	int getNodeCount() { return nodeCounter; };
 
+	/*
+	Returns the data value of the head node or the when updated the object that is located at the head
+	*/
 	int getHeadValue() { return head->data; };
+
+	/*
+	Checks the list to see if then entered item was found
+	*/
+	void find(int value);
+	/*
+	Returns a Boolean value of the the find
+	*/
+	bool findPrivate(int value, Node* t);
 
 	std::string PrintList();
 

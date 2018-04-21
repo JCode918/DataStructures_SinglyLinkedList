@@ -10,6 +10,7 @@ int main()
 	MyList.addNode(5);
 	MyList.addNode(6);
 	MyList.addNode(7);
+	MyList.find(5);
 	std::cout << "The Current List count is " << MyList.getNodeCount() << std::endl;
 
 	std::cout << MyList.PrintList();
