@@ -15,6 +15,7 @@ private:
 		int data;
 		Node* ptr;
 		Node(const int & x, Node* next) : data(x), ptr(next) { }; // Constructor for a Node.
+		
 	};
 	/*
 	Pointer to the first node in our list.
@@ -68,8 +69,19 @@ public:
 	*/
 	void deleteNode(int value);
 
+	/*
+	Returns a Boolean value, to determine the success of a deleteNode call
+	*/
 	bool deleteNodePrivate(int value, Node* t);
+	
+	/*
+	Helper function for the destructor to return all memory to the system. 
+	*/
+	void destroyAllNode(Node* aNode);
 
+	/*
+	Destructor for the Linked list class
+	*/
 	~LinkedList();
 };
 

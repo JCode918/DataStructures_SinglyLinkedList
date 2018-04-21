@@ -179,6 +179,28 @@ bool LinkedList::deleteNodePrivate(int value, Node * t)
 	
 }
 
+void LinkedList::destroyAllNode(Node * aNode)
+{
+	if (aNode == nullptr)
+	{
+		return;
+	}
+	else if (aNode != nullptr && aNode->ptr != nullptr)
+	{
+		std::cout << aNode->data << " memory is being returned to the system." << std::endl;
+		return destroyAllNode(aNode->ptr);		
+		delete aNode;
+	}
+	else if (aNode != nullptr && aNode->ptr == nullptr)
+	{
+		std::cout << aNode->data << " memory is being returned to the system this is also the last Node." << std::endl;
+
+		delete aNode;
+	}
+}
+
+
 LinkedList::~LinkedList()
 {
+	destroyAllNode(head);
 }

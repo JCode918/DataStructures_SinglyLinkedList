@@ -10,6 +10,8 @@ int main()
 	MyList.addNode(5);
 	MyList.addNode(6);
 	MyList.addNode(7);
+
+	/*
 	std::cout << "The Current List count is " << MyList.getNodeCount() << std::endl;
 	std::cout << "The Current Head is " << MyList.getHeadValue() << std::endl;
 	MyList.deleteNode(3);
@@ -23,6 +25,8 @@ int main()
 	MyList.deleteNode(7);
 	std::cout << "The Current List count is " << MyList.getNodeCount() << std::endl;
 	std::cout << "The Current Head is " << MyList.getHeadValue() << std::endl;
+	*/
+
 	std::cout << MyList.PrintList();
 
 	return 0;
